@@ -1,0 +1,162 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    font-family: 'Consolas', monospace;
+    color: #eee;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Контейнер гри */
+.tic-tac-toe {
+    width: fit-content;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.tic-tac-toe h1 {
+    color: #49ff58;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #49ff58, 0 0 20px #49ff58;
+    margin-bottom: 20px;
+}
+
+/* Кнопки */
+.tic-tac-toe button {
+    padding: 10px 15px;
+    margin: 20px;
+    background: transparent;
+    border: 2px solid #49ff58;
+    color: #49ff58;
+    width: 120px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #49ff58;
+}
+
+.tic-tac-toe button:hover {
+    background: #49ff58;
+    color: #222;
+    box-shadow: 0 0 15px #49ff58, 0 0 30px #49ff58;
+}
+
+/* Сітка */
+.tic-tac-toe .game {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.square {
+    width: 80px;
+    height: 80px;
+    background: #111;
+    border: 2px solid #555;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 2em;
+    color: #eee;
+    text-shadow: 0 0 10px #49ff58;
+}
+
+.square:hover {
+    border-color: #49ff58;
+    box-shadow: 0 0 10px #49ff58;
+}
+
+/* Хід гравця */
+.turn {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.turn::after {
+    position: absolute;
+    content: "";
+    width: 50%;
+    height: 100%;
+    top: 0;
+    background: rgba(73, 255, 88, 0.4);
+    border-radius: 9px;
+    z-index: -1;
+    transition: 0.3s ease;
+}
+
+.turn.left::after {
+    left: 0;
+}
+.turn.right::after {
+    left: 50%;
+}
+
+/* Вікно перемоги */
+.winner {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease;
+}
+
+.winner .text {
+    background: #111;
+    width: 80%;
+    max-width: 420px;
+    height: auto;
+    padding: 30px;
+    border: 2px solid #49ff58;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    box-shadow: 0 0 20px #49ff58;
+}
+
+.winner .text h2 {
+    font-size: 2.2em;
+    margin: 0;
+    color: #49ff58;
+    text-shadow: 0 0 15px #49ff58;
+}
+
+.winner .win {
+    margin: 0 auto;
+    padding: 10px 20px;
+    border: 2px solid #49ff58;
+    border-radius: 10px;
+    display: flex;
+    gap: 15px;
+    background: rgba(73, 255, 88, 0.05);
+}
+
+/* Анімації */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
