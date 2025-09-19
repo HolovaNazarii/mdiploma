@@ -23,9 +23,8 @@ jobs:
         run: trivy fs . > trivyfs.txt
       - name: Docker Build and push
         run: |
-          docker build -t diploma .
-          docker tag diploma holovanazarii/diploma:latest
-          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker build -t holovanazarii/diploma:latest .
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
           docker push holovanazarii/diploma:latest
         env:
           DOCKER_CLI_ACI: 1
